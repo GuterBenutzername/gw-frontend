@@ -1,0 +1,49 @@
+.app {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    width: calc ( 100vw - 20vw );
+    height: 100vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    min-width: 9rem;
+    height: 100vh;
+    justify-content: center;
+    gap: 26px;
+}
+
+.sidebar-item {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar-item a {
+    color: #999;
+
+    &:hover {
+        background-color: #fafafa;
+        color: #666;
+    }
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 16px;
+    width: 100%;
+}
+
+.sidebar-item a.active {
+    color: #000;
+}
+
+.sidebar-item a svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 16px;
+}

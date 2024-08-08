@@ -15,6 +15,10 @@
             pkgs.nodejs
             pkgs.nodePackages.pnpm
           ];
+          shellHook = ''
+            pnpm install
+            pnpm run dev
+          '';
         };
       });
     };
