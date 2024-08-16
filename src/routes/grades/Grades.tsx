@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./grades.css";
 import { FaPlus } from "react-icons/fa";
 import { produce } from "immer";
-import { useGWState, Course, Assignment } from "../state_hook";
+import { useGWState, Course, Assignment } from "../state-hook";
 
 export default function Grades() {
   const courses = useGWState((state: { courses: Course[] }) => state.courses);
