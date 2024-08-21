@@ -2,10 +2,11 @@
     border: 0.9px solid #fefefe;
     transition: all 0.5s ease-in-out;
     border-top: none;
-    height: 32px;
+    height: 38px;
+    font-size: 18px;
 }
 
-.selected-course:focus {
+.selected-course:focus, .selected-course:hover {
     border: 0.9px solid #999; /* 0.9px won't move anything on transition */
     border-radius: 1px;
     border-top: none;
@@ -30,7 +31,7 @@
 
 .grades-table-wrapper {
     width: 100%;
-    height: calc(100% - 32px);
+    height: calc(100% - 38px);
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -3,6 +3,7 @@ import "./grades.css";
 import { FaPlus } from "react-icons/fa";
 import { produce } from "immer";
 import { useGWState, Course, Assignment } from "../state-hook";
+import calculateAverage from "./calc-grades";
 
 export default function Grades() {
   const courses = useGWState((state: { courses: Course[] }) => state.courses);
@@ -33,6 +34,11 @@ export default function Grades() {
         </select>
       </span>
       <div className="grades-table-wrapper">
+        <h1>
+          {calculateAverage(courses[currentSelectedCourse].assignments).toFixed(
+            2
+          )}
+        </h1>
         <table className="grades-table">
           <thead>
             <tr>
@@ -81,6 +87,7 @@ export default function Grades() {
                     <input
                       className="grades-input"
                       type="number"
+                      step="0.1"
                       value={assignment.weight}
                       onChange={(e) => {
                         setCourseState(
