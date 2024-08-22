@@ -1,9 +1,9 @@
 import { Assignment } from "../state-hook";
 
 export default function calculateAverage(assignments: Assignment[]) {
-  let weights = assignments.map((assignment: Assignment) => assignment.weight);
+  const weights = assignments.map((assignment: Assignment) => assignment.weight);
   const uniqueWeights = [...new Set(weights)];
-  let averages = [];
+  const averages = [];
   for (let i = 0; i < uniqueWeights.length; i++) {
     const weight = uniqueWeights[i];
     let sum = 0;
@@ -16,7 +16,7 @@ export default function calculateAverage(assignments: Assignment[]) {
     }
     averages.push({ avg: sum / count, weight: weight });
   }
-  let finalAverages = [];
+  const finalAverages = [];
   let totalWeight = 0;
   for (let i = 0; i < averages.length; i++) {
     totalWeight += averages[i].weight;

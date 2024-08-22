@@ -1,11 +1,11 @@
 export function getAssignmentData(document: Document, courseIndex: number) {
-  let assignments = [];
-  let course = document.getElementsByTagName("tbody")[courseIndex * 2 + 4];
-  let rows = Array.from(course.children).slice(1, -1);
+  const assignments = [];
+  const course = document.getElementsByTagName("tbody")[courseIndex * 2 + 4];
+  const rows = Array.from(course.children).slice(1, -1);
   for (let i = 0; i < rows.length; i++) {
-    let row = rows[i];
-    let name = row.children[2].textContent;
-    let weight_string = row.children[3].textContent;
+    const row = rows[i];
+    const name = row.children[2].textContent;
+    const weight_string = row.children[3].textContent;
     let weight = 0;
     switch (weight_string) {
       case "Daily":
@@ -46,7 +46,7 @@ export function getAssignmentData(document: Document, courseIndex: number) {
 }
 
 export function getAllCourseData(document: Document) {
-  let courses = [];
+  const courses = [];
   while (
     document.getElementsByTagName("tbody").length >
     4 + courses.length * 2
