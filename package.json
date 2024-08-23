@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "dependencies": {
     "immer": "^10.1.1",
@@ -20,7 +23,18 @@
     "@faker-js/faker": "^8.4.1",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.18.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-compat": "^6.0.0",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-sonarjs": "^2.0.0",
+    "eslint-plugin-unicorn": "^55.0.0",
+    "husky": "^9.1.5",
     "typescript": "^5.5.4",
     "vite": "^5.4.2"
   }

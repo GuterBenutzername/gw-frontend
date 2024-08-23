@@ -1,16 +1,17 @@
 import { Assignment } from "../state-hook";
 
 export default function calculateAverage(assignments: Assignment[]) {
-  const weights = assignments.map((assignment: Assignment) => assignment.weight);
+  const weights = assignments.map(
+    (assignment: Assignment) => assignment.weight,
+  );
   const uniqueWeights = [...new Set(weights)];
   const averages = [];
-  for (let i = 0; i < uniqueWeights.length; i++) {
-    const weight = uniqueWeights[i];
+  for (const weight of uniqueWeights) {
     let sum = 0;
     let count = 0;
-    for (let j = 0; j < assignments.length; j++) {
-      if (assignments[j].weight === weight) {
-        sum += assignments[j].grade;
+    for (const assignment of assignments) {
+      if (assignment.weight === weight) {
+        sum += assignment.grade;
         count++;
       }
     }
@@ -18,16 +19,16 @@ export default function calculateAverage(assignments: Assignment[]) {
   }
   const finalAverages = [];
   let totalWeight = 0;
-  for (let i = 0; i < averages.length; i++) {
-    totalWeight += averages[i].weight;
+  for (const average of averages) {
+    totalWeight += average.weight;
   }
   if (totalWeight !== 100) {
-    for (let i = 0; i < averages.length; i++) {
-      averages[i].weight = (averages[i].weight * (100 / totalWeight)) / 100;
+    for (const average of averages) {
+      average.weight = (average.weight * (100 / totalWeight)) / 100;
     }
   }
-  for (let i = 0; i < averages.length; i++) {
-    finalAverages.push(averages[i].avg * averages[i].weight);
+  for (const average of averages) {
+    finalAverages.push(average.avg * average.weight);
   }
   return finalAverages.reduce((a, b) => a + b, 0);
 }

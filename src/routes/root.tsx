@@ -10,19 +10,29 @@ export default function Root() {
     <div className="app">
       <div className="sidebar">
         <div className="sidebar-item">
-          <NavLink to="/"><BiSolidTachometer /> Dashboard</NavLink>
+          <NavLink to="/">
+            <BiSolidTachometer /> Dashboard
+          </NavLink>
         </div>
 
         <div className="sidebar-item">
-          <NavLink to="/grades"><Md123 /> Grades</NavLink>
+          <NavLink to="/grades">
+            <Md123 /> Grades
+          </NavLink>
         </div>
 
         <div className="sidebar-item">
-          <NavLink to="/imports"><MdImportExport />Imports</NavLink>
+          <NavLink to="/imports">
+            <MdImportExport />
+            Imports
+          </NavLink>
         </div>
 
         <div className="sidebar-item">
-          <NavLink to="/settings"><MdSettings />Settings</NavLink>
+          <NavLink to="/settings">
+            <MdSettings />
+            Settings
+          </NavLink>
         </div>
       </div>
 
@@ -32,4 +42,3 @@ export default function Root() {
     </div>
   );
 }
-

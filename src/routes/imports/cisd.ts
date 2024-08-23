@@ -1,40 +1,41 @@
 export function getAssignmentData(document: Document, courseIndex: number) {
   const assignments = [];
-  const course = document.getElementsByTagName("tbody")[courseIndex * 2 + 4];
-  const rows = Array.from(course.children).slice(1, -1);
-  for (let i = 0; i < rows.length; i++) {
-    const row = rows[i];
+  const course = document.querySelectorAll("tbody")[courseIndex * 2 + 4];
+  const rows = [...course.children].slice(1, -1);
+  for (const row of rows) {
     const name = row.children[2].textContent;
     const weight_string = row.children[3].textContent;
     let weight = 0;
     switch (weight_string) {
-      case "Daily":
+      case "Daily": {
         weight = 0.15;
         break;
-      case "Quiz":
+      }
+      case "Quiz": {
         weight = 0.25;
         break;
-      case "Major":
+      }
+      case "Major": {
         weight = 0.6;
         break;
-      default:
-        weight = 0;
+      }
+      default: {
         break;
+      }
     }
     let grade = 0;
     if (
-      !(row.children[4].textContent === "Z") &&
-      !(row.children[4].textContent === "-")
+      row.children[4].textContent !== "Z" &&
+      row.children[4].textContent !== "-"
     ) {
-      grade = parseFloat(row.children[4].textContent ?? "0");
+      grade = Number.parseFloat(row.children[4].textContent ?? "0");
     }
     assignments.push({ name, weight, grade });
   }
   let courseName = "";
   let courseElement = course.parentElement;
-  for (let i = 0; i < 4; i++) {
+  for (let index = 0; index < 4; index++) {
     if (courseElement === null) {
-      courseName = "";
       break;
     }
     courseElement = courseElement.parentElement;
@@ -47,10 +48,7 @@ export function getAssignmentData(document: Document, courseIndex: number) {
 
 export function getAllCourseData(document: Document) {
   const courses = [];
-  while (
-    document.getElementsByTagName("tbody").length >
-    4 + courses.length * 2
-  ) {
+  while (document.querySelectorAll("tbody").length > 4 + courses.length * 2) {
     courses.push(getAssignmentData(document, courses.length));
   }
   return courses;

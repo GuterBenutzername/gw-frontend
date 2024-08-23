@@ -9,7 +9,7 @@ export default function Grades() {
   const courses = useGWState((state: { courses: Course[] }) => state.courses);
   const setCourseState = useGWState(
     (state: { setCourseState: (courses: Course[]) => void }) =>
-      state.setCourseState
+      state.setCourseState,
   );
   const [currentSelectedCourse, setCurrentSelectedCourse] = useState(0);
   return (
@@ -18,11 +18,11 @@ export default function Grades() {
         <select
           className="selected-course"
           value={courses[currentSelectedCourse].name}
-          onChange={(e) =>
+          onChange={(event) =>
             setCurrentSelectedCourse(
               courses.findIndex(
-                (course: Course) => course.name === e.target.value
-              )
+                (course: Course) => course.name === event.target.value,
+              ),
             )
           }
         >
@@ -36,7 +36,7 @@ export default function Grades() {
       <div className="grades-table-wrapper">
         <h1>
           {calculateAverage(courses[currentSelectedCourse].assignments).toFixed(
-            2
+            2,
           )}
         </h1>
         <table className="grades-table">
@@ -56,13 +56,13 @@ export default function Grades() {
                       className="grades-input"
                       type="text"
                       value={assignment.name}
-                      onChange={(e) => {
+                      onChange={(event) => {
                         setCourseState(
                           produce(courses, (draft) => {
                             draft[currentSelectedCourse].assignments[
                               index
-                            ].name = e.target.value;
-                          })
+                            ].name = event.target.value;
+                          }),
                         );
                       }}
                     />
@@ -72,13 +72,13 @@ export default function Grades() {
                       className="grades-input"
                       type="number"
                       value={assignment.grade}
-                      onChange={(e) => {
+                      onChange={(event) => {
                         setCourseState(
                           produce(courses, (draft) => {
                             draft[currentSelectedCourse].assignments[
                               index
-                            ].grade = parseFloat(e.target.value);
-                          })
+                            ].grade = Number.parseFloat(event.target.value);
+                          }),
                         );
                       }}
                     />
@@ -89,19 +89,19 @@ export default function Grades() {
                       type="number"
                       step="0.1"
                       value={assignment.weight}
-                      onChange={(e) => {
+                      onChange={(event) => {
                         setCourseState(
                           produce(courses, (draft) => {
                             draft[currentSelectedCourse].assignments[
                               index
-                            ].weight = parseFloat(e.target.value);
-                          })
+                            ].weight = Number.parseFloat(event.target.value);
+                          }),
                         );
                       }}
                     />
                   </td>
                 </tr>
-              )
+              ),
             )}
           </tbody>
         </table>
@@ -115,7 +115,7 @@ export default function Grades() {
                   grade: 0,
                   weight: 0,
                 });
-              })
+              }),
             );
           }}
         >

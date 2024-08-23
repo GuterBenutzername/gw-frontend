@@ -1,0 +1,33 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/strict",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:jsx-a11y/recommended",
+        "plugin:sonarjs/recommended-legacy",
+        "plugin:react-hooks/recommended",
+        "plugin:unicorn/recommended"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "plugins": ["@typescript-eslint", "compat", "jsx-a11y", "react", "react-hooks", "sonarjs", "unicorn"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "project": ["./tsconfig.app.json", "./tsconfig.node.json"]
+            }
+        }
+    ],
+    "rules": {
+        "unicorn/filename-case": "off"
+    },
+    "env": {
+        "browser": true   
+    }
+}
