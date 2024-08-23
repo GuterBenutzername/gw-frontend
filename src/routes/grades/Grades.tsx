@@ -4,6 +4,7 @@ import { FaPlus } from "react-icons/fa";
 import { produce } from "immer";
 import { useGWState, Course, Assignment } from "../state-hook";
 import calculateAverage from "./calc-grades";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Grades() {
   const courses = useGWState((state: { courses: Course[] }) => state.courses);
@@ -50,7 +51,7 @@ export default function Grades() {
           <tbody>
             {courses[currentSelectedCourse].assignments.map(
               (assignment: Assignment, index: number) => (
-                <tr key={index}>
+                <tr key={assignment.id}>
                   <td>
                     <input
                       className="grades-input"
@@ -114,6 +115,7 @@ export default function Grades() {
                   name: "",
                   grade: 0,
                   weight: 0,
+                  id: uuidv4(),
                 });
               }),
             );
