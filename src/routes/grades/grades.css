@@ -8,7 +8,7 @@
 
 .selected-course:focus,
 .selected-course:hover {
-  border: 0.9px solid #999; /* 0.9px won't move anything on transition */
+  border: 0.9px solid #ccc; /* 0.9px won't move anything on transition */
   border-radius: 1px;
   border-top: none;
   outline: none;
@@ -63,6 +63,11 @@ table tr:last-child td {
 table tr td:first-child,
 table tr th:first-child {
   border-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: c;
+  border-top: 0;
+  border-right: 0;
 }
 table tr td:last-child,
 table tr th:last-child {
@@ -70,9 +75,9 @@ table tr th:last-child {
 }
 .grades-input {
   width: 100%;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 0.5px solid #fff;
-  margin: 2px;
+  margin: 0.8px;
   margin-left: 0; /* table padding does something weird here */
   transition: all 0.25s ease-in-out;
   text-overflow: ellipsis;
@@ -102,5 +107,17 @@ table tr th:last-child {
   &:active {
     background-color: #aaa;
     transition: none;
+  }
+}
+
+.delete-button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: #999;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    color: #444;
   }
 }

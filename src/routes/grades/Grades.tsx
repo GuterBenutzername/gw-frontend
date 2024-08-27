@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./grades.css";
 import { FaPlus } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import { produce } from "immer";
 import { useGWState, Course, Assignment } from "../state-hook";
 import calculateAverage from "./calc-grades";
@@ -53,6 +54,21 @@ export default function Grades() {
               (assignment: Assignment, index: number) => (
                 <tr key={assignment.id}>
                   <td>
+                    <button
+                      className="delete-button"
+                      onClick={() => {
+                        setCourseState(
+                          produce(courses, (draft) => {
+                            draft[currentSelectedCourse].assignments.splice(
+                              index,
+                              1,
+                            );
+                          }),
+                        );
+                      }}
+                    >
+                      <IoClose />
+                    </button>
                     <input
                       className="grades-input"
                       type="text"
