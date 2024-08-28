@@ -17,7 +17,6 @@
             buildInputs = [ nodejs nodePackages.pnpm ];
             shellHook = ''
               pnpm install
-              pnpm run dev
             '';
           };
         }
