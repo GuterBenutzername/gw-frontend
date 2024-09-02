@@ -24,9 +24,7 @@ export const useGWState = create<{
       set({ courses });
     },
     async loadCourses() {
-      const response = await fetch(
-        "http://localhost:3000/courses",
-      );
+      const response = await fetch("http://localhost:3000/courses");
       const courses = await response.json();
       for (const course of courses) {
         const course_assignments_response = await fetch(
