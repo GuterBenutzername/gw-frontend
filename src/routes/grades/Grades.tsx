@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./grades.css";
 import { FaPlus } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
@@ -14,12 +14,13 @@ export default function Grades() {
       state.setCourseState,
   );
   const loadCourses = useGWState((state) => state.loadCourses);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const load = async () => {
       await loadCourses();
     };
     load();
-    setCourseState(courses);
+    setCourseState(courses); // force state update
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadCourses]);
   const [currentSelectedCourse, setCurrentSelectedCourse] = useState(0);
   return (
