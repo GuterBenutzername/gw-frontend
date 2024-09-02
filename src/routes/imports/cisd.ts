@@ -30,7 +30,11 @@ export function getAssignmentData(document: Document, courseIndex: number) {
     ) {
       grade = Number.parseFloat(row.children[4].textContent ?? "0");
     }
-    assignments.push({ name, weight, grade });
+    let weight_complex;
+    if (row.children[5].textContent !== "1.00") {
+      weight_complex = Number.parseFloat(row.children[5].textContent ?? "0");
+    }
+    assignments.push({ name, weight, grade, weight_complex });
   }
   let courseName = "";
   let courseElement = course.parentElement;
