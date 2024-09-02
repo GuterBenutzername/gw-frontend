@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import "./grades.css";
 import { FaPlus } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
@@ -13,8 +13,15 @@ export default function Grades() {
     (state: { setCourseState: (courses: Course[]) => void }) =>
       state.setCourseState,
   );
+  const loadCourses = useGWState((state) => state.loadCourses);
+  useLayoutEffect(() => {
+    const load = async () => {await loadCourses()};
+    load();
+    setCourseState(courses);
+  }, [loadCourses]);
   const [currentSelectedCourse, setCurrentSelectedCourse] = useState(0);
   return (
+    courses[currentSelectedCourse] &&
     <div className="grades">
       <span className="selected-course-wrapper">
         <select
@@ -37,7 +44,7 @@ export default function Grades() {
       </span>
       <div className="grades-table-wrapper">
         <h1>
-          {calculateAverage(courses[currentSelectedCourse].assignments).toFixed(
+          {courses[currentSelectedCourse].assignments && calculateAverage(courses[currentSelectedCourse].assignments).toFixed(
             2,
           )}
         </h1>
@@ -50,7 +57,7 @@ export default function Grades() {
             </tr>
           </thead>
           <tbody>
-            {courses[currentSelectedCourse].assignments.map(
+            {courses[currentSelectedCourse].assignments?.map(
               (assignment: Assignment, index: number) => (
                 <tr key={assignment.id}>
                   <td>
