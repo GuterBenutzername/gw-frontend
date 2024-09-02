@@ -10,6 +10,7 @@ export type Assignment = {
   name: string;
   grade: number;
   weight: number;
+  weight_complex?: number;
   id: string;
 };
 

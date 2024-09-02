@@ -11,8 +11,8 @@ export default function calculateAverage(assignments: Assignment[]) {
     let count = 0;
     for (const assignment of assignments) {
       if (assignment.weight === weight) {
-        sum += assignment.grade;
-        count++;
+        sum += assignment.grade * (assignment.weight_complex ?? 1);
+        count += assignment.weight_complex ?? 1;
       }
     }
     averages.push({ avg: sum / count, weight: weight });

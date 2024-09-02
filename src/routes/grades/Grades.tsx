@@ -56,7 +56,8 @@ export default function Grades() {
               <tr>
                 <th>Assignment</th>
                 <th>Grade</th>
-                <th>Portion of Grade</th>
+                <th>Weight</th>
+                <th>Complex</th>
               </tr>
             </thead>
             <tbody>
@@ -126,6 +127,23 @@ export default function Grades() {
                           );
                         }}
                       />
+                    </td>
+                    <td>
+                      {assignment.weight_complex && <input
+                        className="grades-input"
+                        type="number"
+                        step="0.1"
+                        value={assignment.weight_complex}
+                        onChange={(event) => {
+                          setCourseState(
+                            produce(courses, (draft) => {
+                              draft[currentSelectedCourse].assignments[
+                                index
+                              ].weight_complex = Number.parseFloat(event.target.value);
+                            }),
+                          );
+                        }}
+                      />}
                     </td>
                   </tr>
                 ),
